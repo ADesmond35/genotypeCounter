@@ -80,13 +80,7 @@ int main() {
 			}
 			
 		} //End of inner loop
-/*
-		outFile << rsid << "\t" << chromosome << "\t" << position;
-		for (int i = 0; i < 14; i++) {
-			outFile << "\t" << counter[i]; //Print all counters to output file
-		}
-		outFile << "\n";
-*/
+
 		inFile.close();
 	} // End of outer loop
 
