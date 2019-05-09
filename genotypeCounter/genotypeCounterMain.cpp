@@ -12,7 +12,7 @@ using namespace std;
 int main() {
 	ofstream outFile;
 	outFile.open("genotypeCounts.txt", ios::out | ios::trunc);
-	outFile << "RSID\tChromosome\tPosn\tAA\tAG\tAT\tCC\tGG\n"; // Header line of output file
+	outFile << "RSID\tChromosome\tPosn\tAA\tAT\tAC\tAG\tTT\tCT\tGT\tCC\tCG\tGG\tDD\tDI\tII\t--\n"; // Header line of output file
 
 	ifstream inFile[NUM_PATIENTS];
 	string fileName[NUM_PATIENTS] = {"samp1.txt","samp2.txt","samp3.txt","samp4.txt","samp5.txt"}; // All filenames go in this array. If adding or removing files, update NUM_PATIENTS
@@ -21,9 +21,9 @@ int main() {
 	}
 
 	for (int row = 1; row <= NUM_ROWS; row++) { // Loop through all rows (NUM_ROWS defined in preprocessor (before main))
-		string rsid, genotype;
-		int chromosome, position;
-		int counter[14] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0}; // Initialize all counters to 0: AA, AG, AT, CC, GG ...
+		string rsid, genotype; //declare string variables
+		int chromosome, position; //declare integer variables
+		int counter[14] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0}; // Initialize all counters to 0: AA, AT, AC, AG, TT, CT GT, CC, CG, GG, DD, DI, II, --
 
 		for (int fileNumber = 0; fileNumber < NUM_PATIENTS; fileNumber++) { // Loop through all open input files
 
@@ -35,47 +35,46 @@ int main() {
 			if (genotype == "AA") {
 				counter[0]++;
 			}
-			else if (genotype == "AG") {
+			else if (genotype == "AT") {
 				counter[1]++;
 			}
-			else if (genotype == "AT") {
+			else if (genotype == "AC") {
 				counter[2]++;
 			}
-			else if (genotype == "CC") {
+			else if (genotype == "AG") {
 				counter[3]++;
 			}
-			else if (genotype == "GG") {
+			else if (genotype == "TT") {
 				counter[4]++;
 			}
-			/*
-			else if (genotype == "") {
+			else if (genotype == "CT") {
 				counter[5]++;
 			}
-			else if (genotype == "") {
+			else if (genotype == "GT") {
 				counter[6]++;
 			}
-			else if (genotype == "") {
+			else if (genotype == "CC") {
 				counter[7]++;
 			}
-			else if (genotype == "") {
+			else if (genotype == "CG") {
 				counter[8]++;
 			}
-			else if (genotype == "") {
+			else if (genotype == "GG") {
 				counter[9]++;
 			}
-			else if (genotype == "") {
+			else if (genotype == "DD") {
 				counter[10]++;
 			}
-			else if (genotype == "") {
+			else if (genotype == "DI") {
 				counter[11]++;
 			}
-			else if (genotype == "") {
+			else if (genotype == "II") {
 				counter[12]++;
 			}
-			else if (genotype == "") {
+			else if (genotype == "--") {
 				counter[13]++;
 			}
-			*/
+			
 		} //End of inner loop
 
 		outFile << rsid << "\t" << chromosome << "\t" << position;
