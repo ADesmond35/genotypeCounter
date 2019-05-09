@@ -29,6 +29,11 @@ int main() {
 		
 		inFile.open(fileName[fileNumber]);
 
+		while (inFile.peek() == '#'){
+			string garbage;
+			getline(inFile,garbage);
+		}
+
 		for (int row = 0; row < NUM_ROWS; row++){ // Loop through all rows (NUM_ROWS defined in preprocessor (before main))
 
 			inFile >> rsid;
