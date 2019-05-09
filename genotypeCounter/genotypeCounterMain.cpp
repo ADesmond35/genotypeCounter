@@ -20,7 +20,7 @@ int main() {
 		inFile[i].open(fileName[i]);
 	}
 
-	for (int row = 1; row <= NUM_ROWS; row++) { // Loop through all rows (number of rows defined in preprocessor)
+	for (int row = 1; row <= NUM_ROWS; row++) { // Loop through all rows (NUM_ROWS defined in preprocessor (before main))
 		string rsid, genotype;
 		int chromosome, position;
 		int counter[14] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0}; // Initialize all counters to 0: AA, AG, AT, CC, GG ...
